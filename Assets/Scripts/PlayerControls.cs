@@ -1,29 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerControls : MonoBehaviour
 {
     [SerializeField] float speed = 3f;
+    [SerializeField] TextMeshProUGUI timerText;
+
     private Rigidbody2D rb;
+    private float timer = 10f;
+
+    // Gravity directions
+    private enum GravDir { Down, Up, Left, Right }
+    private GravDir currentDir = GravDir.Down;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        SetGravity(GravDir.Down);   // start normal
     }
 
     void Update()
     {
         Vector2 g = Physics2D.gravity;
 
+        // TIMER
+        timer -= Time.deltaTime;
+
+        // ⭐ FIX: Prevent crash if timerText is not assigned
+        if (timerText != null)
+        {
+            timerText.text = Mathf.Ceil(timer).ToString();
+        }
+
+        if (timer <= 0f)
+        {
+            ChangeGravityRandom();
+            timer = 10f; // reset timer
+        }
+
         // ROTATION BASED ON GRAVITY DIRECTION
-        if (g.y < 0)        // gravity down
+        if (g.y < 0)
             transform.rotation = Quaternion.Euler(0, 0, 0);
-        else if (g.y > 0)   // gravity up
+        else if (g.y > 0)
             transform.rotation = Quaternion.Euler(0, 0, 180);
-        else if (g.x < 0)   // gravity left
+        else if (g.x < 0)
             transform.rotation = Quaternion.Euler(0, 0, -90);
-        else if (g.x > 0)   // gravity right
+        else if (g.x > 0)
             transform.rotation = Quaternion.Euler(0, 0, 90);
 
         // ⭐ ALWAYS THE SAME CONTROLS ⭐
@@ -35,29 +59,46 @@ public class PlayerControls : MonoBehaviour
 
         if (Input.GetKey("space"))
             transform.Translate(Vector2.up * speed * Time.deltaTime);
+    }
 
-        // ⭐ FIX #1 — F always sets gravity UP (from ANY direction)
-        if (Input.GetKeyDown(KeyCode.F))
+    // -----------------------------
+    // GRAVITY SYSTEM
+    // -----------------------------
+
+    void ChangeGravityRandom()
+    {
+        GravDir newDir;
+
+        do
         {
-            Physics2D.gravity = new Vector2(0f, 9.81f);
+            newDir = (GravDir)Random.Range(0, 4);
         }
+        while (newDir == currentDir); // avoid repeating same direction
 
-        // Gravity RIGHT
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            Physics2D.gravity = new Vector2(9.81f, 0f);
-        }
+        SetGravity(newDir);
+    }
 
-        // Gravity LEFT
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            Physics2D.gravity = new Vector2(-9.81f, 0f);
-        }
+    void SetGravity(GravDir dir)
+    {
+        currentDir = dir;
 
-        // Reset DOWN
-        if (Input.GetKeyDown(KeyCode.J))
+        switch (dir)
         {
-            Physics2D.gravity = new Vector2(0f, -9.81f);
+            case GravDir.Down:
+                Physics2D.gravity = new Vector2(0f, -9.81f);
+                break;
+
+            case GravDir.Up:
+                Physics2D.gravity = new Vector2(0f, 9.81f);
+                break;
+
+            case GravDir.Left:
+                Physics2D.gravity = new Vector2(-9.81f, 0f);
+                break;
+
+            case GravDir.Right:
+                Physics2D.gravity = new Vector2(9.81f, 0f);
+                break;
         }
     }
 }
