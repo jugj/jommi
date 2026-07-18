@@ -668,6 +668,7 @@ GameObject:
   - component: {fileID: 306005432}
   - component: {fileID: 306005431}
   - component: {fileID: 306005433}
+  - component: {fileID: 306005434}
   m_Layer: 0
   m_Name: Doors Left closed
   m_TagString: Untagged
@@ -857,6 +858,19 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+--- !u!114 &306005434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306005429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7194a7dce9f307d48b361780ec250a8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 82893925}
 --- !u!1 &710517838
 GameObject:
   m_ObjectHideFlags: 0
@@ -1325,7 +1339,6 @@ GameObject:
   - component: {fileID: 924969796}
   - component: {fileID: 924969795}
   - component: {fileID: 924969797}
-  - component: {fileID: 924969798}
   m_Layer: 0
   m_Name: Doors up closed
   m_TagString: Untagged
@@ -1515,19 +1528,6 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
---- !u!114 &924969798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 924969793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7194a7dce9f307d48b361780ec250a8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 82893925}
 --- !u!1 &978713712
 GameObject:
   m_ObjectHideFlags: 0
@@ -2003,7 +2003,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -856, y: -457}
+  m_AnchoredPosition: {x: -785, y: -457}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.50000006, y: 0.5}
 --- !u!114 &1101473647
@@ -3364,7 +3364,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1201325593}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd448093e2a29a54295c2de041fd0d3e, type: 3}
+  m_Script: {fileID: 11500000, guid: 263ec02d75fcd7540a7aa787088c225c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 82893925}
