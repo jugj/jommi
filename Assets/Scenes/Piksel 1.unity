@@ -2787,6 +2787,7 @@ GameObject:
   - component: {fileID: 1201325595}
   - component: {fileID: 1201325597}
   - component: {fileID: 1201325598}
+  - component: {fileID: 1201325599}
   m_Layer: 0
   m_Name: Doors up opened
   m_TagString: Untagged
@@ -2989,6 +2990,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 82893925}
+--- !u!114 &1201325599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201325593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0941cfd0a78cce149843c5da84d924b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelName: Piksel 2
 --- !u!1 &1391492022
 GameObject:
   m_ObjectHideFlags: 0

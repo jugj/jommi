@@ -5,7 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Fertige Szene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Piksel 1.unity
+    guid: d7f2303690828b34d8e2ba0ec40de76d
+  - enabled: 1
+    path: Assets/Piksel 2.unity
+    guid: d655708f934b6d440afd174e9514c9c5
   m_configObjects: {}
