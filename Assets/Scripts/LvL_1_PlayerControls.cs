@@ -6,10 +6,12 @@ public class LvL_1_PlayerControls : MonoBehaviour
 {
     [SerializeField] float speed = 3f;
     private Rigidbody2D rb;
+    private Animator animator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -27,14 +29,23 @@ public class LvL_1_PlayerControls : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, 90);
 
         // ⭐ ALWAYS THE SAME CONTROLS ⭐
-        if (Input.GetKey("d"))
+        if (Input.GetKey("d")) {
+            animator.SetBool("PlayerMoving", true);
+            animator.SetBool("PlayerLeft", false);
             transform.Translate(Vector2.right * speed * Time.deltaTime);
-
-        if (Input.GetKey("a"))
+        }
+        else if (Input.GetKey("a")) {
+            animator.SetBool("PlayerMoving", true);
+            animator.SetBool("PlayerLeft", true);
             transform.Translate(Vector2.left * speed * Time.deltaTime);
+        }
+        else {
+            animator.SetBool("PlayerMoving", false);
+        }
 
-        if (Input.GetKey("space"))
+        if (Input.GetKey("space")) {
             transform.Translate(Vector2.up * speed * Time.deltaTime);
+        }
 
         // ⭐ FIX #1 — F always sets gravity UP (from ANY direction)
         if (Input.GetKeyDown(KeyCode.F))
