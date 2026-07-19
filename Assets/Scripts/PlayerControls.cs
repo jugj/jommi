@@ -10,6 +10,7 @@ public class PlayerControls : MonoBehaviour
 
     private Rigidbody2D rb;
     private float timer = 10f;
+    private Animator animator;
 
     // Gravity directions
     private enum GravDir { Down, Up, Left, Right }
@@ -19,7 +20,9 @@ public class PlayerControls : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         SetGravity(GravDir.Down);   // start normal
+        animator = GetComponentInChildren<Animator>();
     }
+
 
     void Update()
     {
@@ -51,14 +54,22 @@ public class PlayerControls : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, 90);
 
         // ⭐ ALWAYS THE SAME CONTROLS ⭐
-        if (Input.GetKey("d"))
+        if (Input.GetKey("d")) {
+            animator.SetBool("PlayerMoving", true);
+            animator.SetBool("PlayerLeft", false);
             transform.Translate(Vector2.right * speed * Time.deltaTime);
-
-        if (Input.GetKey("a"))
+        }
+        else if (Input.GetKey("a")) {
+            animator.SetBool("PlayerMoving", true);
+            animator.SetBool("PlayerLeft", true);
             transform.Translate(Vector2.left * speed * Time.deltaTime);
+        }
+        else {
+            animator.SetBool("PlayerMoving", false);
+        }
 
         if (Input.GetKey("space"))
-            transform.Translate(Vector2.up * speed * Time.deltaTime);
+            transform.Translate(Vector2.up * speed * Time.deltaTime * 1.33f);
     }
 
     // -----------------------------

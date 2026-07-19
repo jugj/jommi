@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Piksel 2.unity
     guid: d655708f934b6d440afd174e9514c9c5
+  - enabled: 1
+    path: Assets/Piksel 3.unity
+    guid: b7e57eb0ae1e63b4f8d359b752709e21
   m_configObjects: {}
