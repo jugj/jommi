@@ -69,7 +69,7 @@ public class PlayerControls : MonoBehaviour
         }
 
         if (Input.GetKey("space"))
-            transform.Translate(Vector2.up * speed * Time.deltaTime * 1.33f);
+            transform.Translate(Vector2.up * speed * Time.deltaTime * 1.5f);
     }
 
     // -----------------------------
